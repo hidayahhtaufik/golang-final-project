@@ -95,7 +95,7 @@ func UserLogin(c *gin.Context) {
 		return
 	}
 
-	comparePass := helpers.ComparePass(User.Password, password)
+	comparePass := helpers.ComparePass([]byte(User.Password), []byte(password))
 
 	if !comparePass {
 		c.JSON(http.StatusUnauthorized, gin.H{
