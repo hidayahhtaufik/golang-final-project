@@ -15,14 +15,28 @@ type SocialMedia struct {
 	User           User   `json:"user"`
 }
 
-func (u *SocialMedia) BeforeCreate(tx *gorm.DB) (err error) {
-	if len(strings.TrimSpace(u.Name)) == 0 {
+func (s *SocialMedia) BeforeCreate(tx *gorm.DB) (err error) {
+	if len(strings.TrimSpace(s.Name)) == 0 {
 		err = errors.New("Social Media Name is required")
 		return
 	}
 
-	if len(strings.TrimSpace(u.SocialMediaURL)) == 0 {
+	if len(strings.TrimSpace(s.SocialMediaURL)) == 0 {
 		err = errors.New("Social Media Url is required")
+		return
+	}
+
+	err = nil
+	return
+}
+
+func (s *SocialMedia) BeforeUpdate(tx *gorm.DB) (err error) {
+	if len(strings.TrimSpace(s.Name)) == 0 {
+		err = errors.New("Social Media name is required")
+		return
+	}
+	if len(strings.TrimSpace(s.SocialMediaURL)) == 0 {
+		err = errors.New("Social Media URL is required")
 		return
 	}
 

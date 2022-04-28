@@ -12,7 +12,7 @@ type User struct {
 	GormModel
 	Username     string        `gorm:"uniqueIndex;not null" json:"username" form:"username" valid:"required~Your username is required"`
 	Email        string        `gorm:"uniqueIndex;not null" json:"email" form:"email" valid:"required~Your email is required,email~Invalid email format"`
-	Password     string        `gorm:"not null" json:"password" form:"password" valid:"required~Your password is required,minstringlength(6)~passwrod hast to have a minimum length of 6 characters"`
+	Password     string        `gorm:"not null" json:"password" form:"password" valid:"required~Your password is required,minstringlength(6)~password hast to have a minimum length of 6 characters"`
 	Age          int           `gorm:"not null" json:"age" form:"age"`
 	Photos       []Photo       `json:"photos" gorm:"constraint:OnDelete:CASCADE;"`
 	SocialMedias []SocialMedia `json:"social_medias" gorm:"constraint:OnDelete:CASCADE;"`

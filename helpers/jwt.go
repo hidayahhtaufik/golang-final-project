@@ -10,8 +10,10 @@ import (
 	"github.com/joho/godotenv"
 )
 
-var _ = godotenv.Load()
-var secretKey = os.Getenv("SECRET_KEY")
+var (
+	_         = godotenv.Load()
+	secretKey = os.Getenv("SECRET_KEY")
+)
 
 func GenerateToken(id uint, email string, username string) string {
 	claims := jwt.MapClaims{

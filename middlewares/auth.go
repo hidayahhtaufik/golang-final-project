@@ -20,7 +20,7 @@ func Auth() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 				"status":  http.StatusUnauthorized,
 				"error":   "Unauthorized",
-				"message": "Not Authentication",
+				"message": err.Error(),
 			})
 			return
 		}
@@ -67,7 +67,7 @@ func PhotoAuthorization() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 				"status":  http.StatusUnauthorized,
 				"error":   "Unauthorized",
-				"message": "Not Authorized",
+				"message": err.Error(),
 			})
 			return
 		}
@@ -106,7 +106,7 @@ func SocialMediaAuthorization() gin.HandlerFunc {
 		if socMed.UserID != userID {
 			c.AbortWithStatusJSON(http.StatusBadRequest, gin.H{
 				"error":   "Unauthorized",
-				"message": "Not Authorized",
+				"message": err.Error(),
 			})
 			return
 		}
@@ -147,7 +147,7 @@ func CommentAuthorization() gin.HandlerFunc {
 			c.AbortWithStatusJSON(http.StatusUnauthorized, gin.H{
 				"status":  http.StatusUnauthorized,
 				"error":   "Unauthorized",
-				"message": "Not Authorized",
+				"message": err.Error(),
 			})
 			return
 		}
